@@ -2,18 +2,27 @@
 
 Website/app foundation for medium to larger scale businesses and websites/apps.
 
-## Purpose
-Scalable multi-page architecture, team stubs, richer content, CMS-friendly scaffolds, and clear bridge into the complex G2PTECHOFFICE / AuraG2P Music Studio Platform for full office desktop operations (file create/cleanup/structure for deploys & AI builds).
+**Executive-operated.** Scalable multi-page architecture, team stubs, richer content, CMS-friendly scaffolds, and clear bridge into the complex G2PTECHOFFICE / AuraG2P Music Studio Platform for full office desktop operations (file create/cleanup/structure for deploys & AI builds).
 
 ## Features
 - Dark modern Tailwind UI optimized for professional presentation
-- Template categories (Studio/Agency, SaaS Marketing, Growing Services, Education, Hybrid AI+Business, Content Hub…)
+- Template categories (up to 10 best patterns):
+  - Studio / Agency
+  - SaaS Marketing
+  - Growing Multi-service
+  - Education Platform
+  - Content / Media Hub
+  - Hybrid AI Front
+  - Professional Services expanded
+  - E-com Growth
+  - Agency Process
+  - Internal Tools teaser
 - Live status panel reflecting AuraXur simulation + shared memory readiness
 - Explicit growth path to full complex ops platform
 - Multi-simulation shared memory architecture for reduced latency and collective knowledge growth
 
 ## How Multi-Sim Works on Your Computer
-Primary sim stays light. Secondary sims (design variants, deploy graphs, AI configs) share a common store. First compute pays the cost; later ones load cache. Heavy work offloads to hosts (RunPod/Railway) under AuraXur OS functions so the local machine stays elite.
+Primary sim stays light. Secondary sims (design variants, deploy graphs, AI configs) share a common store. First compute pays the cost; later ones load cache. Heavy work offloads to hosts (RunPod/Railway) under AuraXur OS functions so the local machine stays elite for continuous site operation.
 
 ## Quick Start
 ```bash
