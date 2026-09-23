@@ -4,19 +4,21 @@ Website/app foundation for medium to larger scale businesses and websites/apps.
 
 **Executive-operated.** Scalable multi-page architecture, team stubs, richer content, CMS-friendly scaffolds, and clear bridge into the complex G2PTECHOFFICE / AuraG2P Music Studio Platform for full office desktop operations (file create/cleanup/structure for deploys & AI builds).
 
+**Last executive update: 2026-09-22** — Canonical knowledge in workspace `G2P_AURA_ECOSYSTEM_KNOWLEDGE.md`.
+
 ## Features
 - Dark modern Tailwind UI optimized for professional presentation
 - Template categories (up to 10 best patterns):
-  - Studio / Agency
-  - SaaS Marketing
-  - Growing Multi-service
-  - Education Platform
-  - Content / Media Hub
-  - Hybrid AI Front
-  - Professional Services expanded
-  - E-com Growth
-  - Agency Process
-  - Internal Tools teaser
+  1. Studio / Agency
+  2. SaaS Marketing
+  3. Growing Multi-service
+  4. Education Platform
+  5. Content / Media Hub
+  6. Hybrid AI Front
+  7. Professional Services expanded
+  8. E-com Growth
+  9. Agency Process
+  10. Internal Tools teaser
 - Live status panel reflecting AuraXur simulation + shared memory readiness
 - Explicit growth path to full complex ops platform
 - Multi-simulation shared memory architecture for reduced latency and collective knowledge growth
