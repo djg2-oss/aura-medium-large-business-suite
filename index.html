@@ -1,29 +1,78 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Medium to Large Suite</title><style>
-:root{--bg:#0c0e12;--panel:#141820;--line:#2a3140;--ink:#e8e4da;--muted:#9a9386;--gold:#c6a15b;--teal:#6fbfb0;--danger:#c46b6b}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,sans-serif}
-a{color:var(--gold);text-decoration:none}header{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
-h1{font-size:20px;margin:0;letter-spacing:.04em}h2{font-size:16px;margin:0 0 8px}.muted{color:var(--muted)}
-.wrap{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 64px)}
-nav button,button,.chip{background:#1c2230;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer}
-nav{padding:14px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
-main{padding:18px} .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
-.card h3{margin:0 0 6px;font-size:15px}.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-input,select,textarea{background:#0f131a;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px;width:100%}
-pre,textarea.log{font:12px/1.4 ui-monospace,monospace;white-space:pre-wrap}
-.player{background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
-video{width:100%;max-height:360px;background:#000;display:block}
-.tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:left;font-size:13px}
-</style></head><body>
-<header><div><div class="tag">G2P Technologies</div><h1>Medium to Large Suite</h1><div class="muted">One site for ten multi-team business types</div></div>
-<div class="row"><a href="../index.html">Command</a><a href="../office/index.html">Office</a><a href="../sm/index.html">Small–Medium</a><a href="../ml/index.html">Medium–Large</a><a href="../builder/index.html">Builder</a></div>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>G2P Medium–Large</title>
+<style>
+:root { --bg:#0c0f14; --panel:#151b24; --line:#2a3444; --text:#e8edf5; --muted:#93a0b5; --accent:#c4a27a; --ok:#7dcea0; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Georgia, "Iowan Old Style", serif; background:radial-gradient(1200px 500px at 10% -10%, #1c2838, var(--bg)); color:var(--text); }
+header { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; padding:28px 32px 12px; border-bottom:1px solid var(--line); }
+h1 { font-weight:500; letter-spacing:.04em; margin:0; font-size:28px; }
+.kicker { color:var(--accent); letter-spacing:.18em; text-transform:uppercase; font-size:11px; font-family:ui-sans-serif, system-ui; }
+nav button, .btn { background:#1c2533; color:var(--text); border:1px solid var(--line); border-radius:999px; padding:8px 14px; cursor:pointer; font-family:ui-sans-serif, system-ui; }
+nav button.on, .btn.primary { background:var(--accent); color:#1a1408; border-color:var(--accent); }
+main { padding:22px 32px 64px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; }
+.card h3 { margin:0 0 8px; font-size:18px; }
+.muted { color:var(--muted); font-family:ui-sans-serif, system-ui; font-size:13px; line-height:1.45; }
+input, select, textarea { width:100%; background:#0e141c; color:var(--text); border:1px solid var(--line); border-radius:10px; padding:8px 10px; font-family:ui-sans-serif, system-ui; }
+textarea { min-height:90px; }
+label { display:block; font-size:12px; color:var(--muted); margin:8px 0 4px; font-family:ui-sans-serif, system-ui; }
+pre, .mono { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; white-space:pre-wrap; }
+.player { background:#090d13; border:1px solid var(--line); border-radius:16px; padding:12px; }
+video, audio { width:100%; }
+.tag { display:inline-block; margin:4px 4px 0 0; padding:4px 8px; border-radius:999px; border:1px solid var(--line); font-size:12px; font-family:ui-sans-serif, system-ui; }
+section { display:none; }
+section.on { display:block; }
+table { width:100%; border-collapse:collapse; font-family:ui-sans-serif, system-ui; font-size:13px; }
+td, th { border-bottom:1px solid var(--line); text-align:left; padding:8px; }
+</style>
+</head>
+<body>
+<header>
+  <div><div class="kicker">One site for growing operations</div><h1>G2P Medium–Large</h1></div>
+  <nav id="nav"></nav>
 </header>
-<div class="wrap"><nav><button>Templates</button><a href="../builder/index.html">Open in builder</a></nav><main><section><p class="muted">Ten heavier templates. Roles, locations, and a deploy folder contract. Still static until you host it.</p><div class="grid"><article class="card"><div class="tag">Template 01</div><h3>Recording campus</h3><p>Rooms, engineers, session board, release calendar</p><p class="muted">Multi-room studio</p><button data-i="0">Use template</button></article><article class="card"><div class="tag">Template 02</div><h3>Retail group</h3><p>Locations, inventory roles, campaign calendar</p><p class="muted">Multi-store</p><button data-i="1">Use template</button></article><article class="card"><div class="tag">Template 03</div><h3>SaaS</h3><p>Product, pricing tiers, status, docs</p><p class="muted">Software company</p><button data-i="2">Use template</button></article><article class="card"><div class="tag">Template 04</div><h3>Agency</h3><p>Practices, case system, staffing</p><p class="muted">Multi-team agency</p><button data-i="3">Use template</button></article><article class="card"><div class="tag">Template 05</div><h3>Hospitality group</h3><p>Venues, events, vendor list</p><p class="muted">Several sites</p><button data-i="4">Use template</button></article><article class="card"><div class="tag">Template 06</div><h3>Campus</h3><p>Programs, admissions, faculty</p><p class="muted">Education org</p><button data-i="5">Use template</button></article><article class="card"><div class="tag">Template 07</div><h3>Logistics</h3><p>Lanes, SLAs, depot map</p><p class="muted">Operations company</p><button data-i="6">Use template</button></article><article class="card"><div class="tag">Template 08</div><h3>Firm</h3><p>Practices, matters pipeline, roles</p><p class="muted">Professional firm</p><button data-i="7">Use template</button></article><article class="card"><div class="tag">Template 09</div><h3>Marketplace</h3><p>Sellers, categories, trust notes</p><p class="muted">Two-sided</p><button data-i="8">Use template</button></article><article class="card"><div class="tag">Template 10</div><h3>Product line</h3><p>SKUs, plants, compliance folder</p><p class="muted">Manufacturer</p><button data-i="9">Use template</button></article></div><div class="card"><h3>Working preview</h3><pre id="out">Select a template.</pre><button id="exp">Export static site</button></div></section></main></div>
-<script>const items=[["Recording campus", "Rooms, engineers, session board, release calendar", "Multi-room studio"], ["Retail group", "Locations, inventory roles, campaign calendar", "Multi-store"], ["SaaS", "Product, pricing tiers, status, docs", "Software company"], ["Agency", "Practices, case system, staffing", "Multi-team agency"], ["Hospitality group", "Venues, events, vendor list", "Several sites"], ["Campus", "Programs, admissions, faculty", "Education org"], ["Logistics", "Lanes, SLAs, depot map", "Operations company"], ["Firm", "Practices, matters pipeline, roles", "Professional firm"], ["Marketplace", "Sellers, categories, trust notes", "Two-sided"], ["Product line", "SKUs, plants, compliance folder", "Manufacturer"]];
-const $=s=>document.querySelector(s); let cur=null;
-document.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{cur=items[+b.dataset.i]; $('#out').textContent=cur[0]+'\n'+cur[1]+'\n'+cur[2]+'\n\nPages: home, offer, proof, contact\nBlocks: hero, services, proof, faq, footer';});
-$('#exp').onclick=()=>{ if(!cur) return; const html='<!doctype html><meta charset=utf-8><title>'+cur[0]+'</title><h1>'+cur[0]+'</h1><p>'+cur[1]+'</p>'; const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([html],{type:'text/html'})); a.download=cur[0].toLowerCase().replace(/\s+/g,'-')+'.html'; a.click(); };
-</script></body></html>
+<main>
+<section data-tab="Command">
+  <div class="grid">
+    <article class="card"><h3>Medium to larger</h3><p class="muted">Roles, locations, release train, and a trust page. Still one app. Modules turn on, they are not separate products.</p></article>
+    <article class="card"><h3>Release train</h3><pre>dev → stage → prod
+owner required
+rollback note required
+folder: releases/YYYY-MM-DD/</pre></article>
+    <article class="card"><h3>Role matrix</h3><table><tr><th>Role</th><th>Can</th></tr><tr><td>Owner</td><td>Publish, money, access</td></tr><tr><td>Operator</td><td>Content, bookings, deploys</td></tr><tr><td>Creator</td><td>Assets only</td></tr><tr><td>Viewer</td><td>Read</td></tr></table></article>
+  </div>
+</section>
+<section data-tab="Templates">
+  <div class="grid"><article class='card'><h3>Multi-site operator</h3><p class='muted'>Ten operating templates. Pick one, clone the folder contract, ship.</p><span class='tag'>Region command</span><span class='tag'>Brand system</span><span class='tag'>Location scorecard</span><span class='tag'>Shared catalog</span><span class='tag'>Franchise kit</span><span class='tag'>Vendor portal</span><span class='tag'>Audit trail</span><span class='tag'>Hiring pipeline</span><span class='tag'>Capital plan</span><span class='tag'>Crisis page</span></article><article class='card'><h3>Software platform</h3><p class='muted'>Ten operating templates. Pick one, clone the folder contract, ship.</p><span class='tag'>Tenant admin</span><span class='tag'>Usage billing</span><span class='tag'>Status page</span><span class='tag'>SSO gate</span><span class='tag'>Sandbox docs</span><span class='tag'>Role matrix</span><span class='tag'>Data residency</span><span class='tag'>Release notes</span><span class='tag'>Partner API</span><span class='tag'>Trust center</span></article><article class='card'><h3>Studio network</h3><p class='muted'>Ten operating templates. Pick one, clone the folder contract, ship.</p><span class='tag'>Room inventory</span><span class='tag'>Artist deals</span><span class='tag'>Distribution desk</span><span class='tag'>Rights ledger</span><span class='tag'>Tour routing</span><span class='tag'>Sync licensing</span><span class='tag'>Payroll creatives</span><span class='tag'>Asset DAM</span><span class='tag'>Label P and L</span><span class='tag'>Press room</span></article><article class='card'><h3>Healthcare group</h3><p class='muted'>Ten operating templates. Pick one, clone the folder contract, ship.</p><span class='tag'>Clinic network</span><span class='tag'>Credentialing</span><span class='tag'>Referral routing</span><span class='tag'>Quality board</span><span class='tag'>Patient access</span><span class='tag'>Payer contracts</span><span class='tag'>Compliance calendar</span><span class='tag'>Provider load</span><span class='tag'>Location finder</span><span class='tag'>Board packet</span></article><article class='card'><h3>Commerce group</h3><p class='muted'>Ten operating templates. Pick one, clone the folder contract, ship.</p><span class='tag'>Omni catalog</span><span class='tag'>Warehouse map</span><span class='tag'>B2B portal</span><span class='tag'>Marketplace</span><span class='tag'>Returns desk</span><span class='tag'>Margin board</span><span class='tag'>Campaign calendar</span><span class='tag'>Store ops</span><span class='tag'>Vendor score</span><span class='tag'>Forecast</span></article></div>
+</section>
+<section data-tab="Sites">
+  <article class="card"><h3>When a client site grows</h3><p class="muted">Start on the SMB suite. Move here when there is a second location, a second brand, or a staff login. Do not start here.</p></article>
+</section>
+</main>
+<script>
+const nav = document.getElementById('nav');
+const sections = [...document.querySelectorAll('main section')];
+sections.forEach((s,i) => {
+  const b = document.createElement('button');
+  b.textContent = s.dataset.tab;
+  if(i===0) { b.classList.add('on'); s.classList.add('on'); }
+  b.onclick = () => {
+    sections.forEach(x => x.classList.remove('on'));
+    [...nav.children].forEach(x => x.classList.remove('on'));
+    s.classList.add('on'); b.classList.add('on');
+  };
+  nav.appendChild(b);
+});
+function dl(name, text, type='text/plain') {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], {type}));
+  a.download = name; a.click();
+}
+</script>
+</body>
+</html>
