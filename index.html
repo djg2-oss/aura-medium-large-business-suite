@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>G2P Medium–Large Suite</title>
+<title>AuraG2P Medium–Large Business Suite</title>
 <style>
 body{margin:0;background:#0e1412;color:#e7efe9;font-family:system-ui}
-header{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #24302b}
-.layout{display:grid;grid-template-columns:220px 1fr 260px}
-a,button{color:#d7c08a;background:transparent;border:1px solid #345046;padding:8px;cursor:pointer}
-.panel{padding:16px;border-right:1px solid #24302b} .kpi{font-size:28px}
-table{width:100%;border-collapse:collapse} td{border-bottom:1px solid #24302b;padding:8px}
-video{width:100%;background:#000}
+header{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #24302b;background:#121a18}
+.layout{display:grid;grid-template-columns:240px 1fr}
+.nav button{display:block;width:100%;text-align:left;background:transparent;border:none;color:#d7c08a;padding:10px 16px;cursor:pointer}
+.nav button:hover{background:#1a2421}
+.main{padding:24px}
+.kpi{font-size:32px;color:#c9a227}
+table{width:100%;border-collapse:collapse;margin-top:16px} td,th{border-bottom:1px solid #24302b;padding:10px;text-align:left}
+video{width:100%;max-width:640px;background:#000;margin-top:16px}
 </style></head><body>
-<header><strong>G2P Medium–Large</strong><span id="name">Multi-site operator</span></header>
+<header><strong>AuraG2P Medium–Large Suite</strong><span id="current">Select template</span></header>
 <div class="layout">
-<nav class="panel" id="nav"></nav>
-<section class="panel">
-  <div class="kpi" id="kpi">10 templates</div>
-  <p id="blurb"></p>
+<nav class="nav" id="nav"></nav>
+<main class="main">
+  <div class="kpi" id="kpi">10 Templates</div>
+  <p id="blurb">Choose a business type on the left.</p>
   <table id="tbl"></table>
-  <h3>Explicit video player</h3>
+  <h3>Explicit Video Player</h3>
   <video controls id="vid"></video>
-  <input type="file" accept="video/*" id="vf"/>
-</section>
-<aside class="panel"><b>Operating rules</b><ul><li>Regions, roles, audit</li><li>One brand system</li><li>Static shell, API later</li><li>Host on AuraXur only as checkpoint</li></ul></aside>
+  <input type="file" accept="video/*" onchange="document.getElementById('vid').src=URL.createObjectURL(this.files[0])"/>
+</main>
 </div>
 <script>
 const T=[
-["Multi-site clinic group","Regions, credentialing, referral SLA"],
-["Hotel / venue group","Occupancy, events, brand standards"],
-["Regional retailer","Stores, inventory, campaigns"],
-["B2B manufacturer","Plants, orders, QA lots"],
-["Professional network","Offices, matters, conflicts"],
-["Media network","Shows, rights, release calendar"],
-["Logistics operator","Lanes, exceptions, POD"],
-["Education group","Campuses, terms, enrollment"],
-["Property portfolio","Assets, leases, capex"],
-["Holding company","Subsidiaries, board pack, KPIs"]
+["Multi-site Clinic Group","Regions, credentialing, referral SLA, shared brand"],
+["Hotel / Venue Group","Occupancy, events, brand standards, multi-property"],
+["Regional Retailer","Stores, inventory, campaigns, regional pricing"],
+["B2B Manufacturer","Plants, orders, QA lots, supply chain"],
+["Professional Network","Offices, matters, conflicts, knowledge base"],
+["Media Network","Shows, rights, release calendar, multi-channel"],
+["Logistics Operator","Lanes, exceptions, POD, fleet"],
+["Education Group","Campuses, terms, enrollment, faculty"],
+["Property Portfolio","Assets, leases, capex, reporting"],
+["Holding Company","Subsidiaries, board pack, KPIs, governance"]
 ];
 function show(i){
-  document.getElementById("name").textContent=T[i][0];
-  document.getElementById("blurb").textContent=T[i][1];
-  document.getElementById("tbl").innerHTML="<tr><td>Role</td><td>Operator / regional / HQ</td></tr><tr><td>Modules</td><td>Pipeline, people, files, player, audit</td></tr><tr><td>Deploy</td><td>/apps/web /apps/api /release</td></tr>";
-  document.getElementById("nav").innerHTML=T.map((t,j)=>`<button data-i="${j}">${j+1}. ${t[0]}</button>`).join("<br/>");
-  document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>show(+b.dataset.i));
+  document.getElementById("current").textContent = T[i][0];
+  document.getElementById("blurb").textContent = T[i][1];
+  document.getElementById("tbl").innerHTML = `<tr><th>Role</th><td>Operator / Regional / HQ</td></tr><tr><th>Modules</th><td>Pipeline, People, Files, Audit, Video</td></tr><tr><th>Deploy</th><td>/apps/web /apps/api /release</td></tr>`;
 }
-document.getElementById("vf").onchange=e=>{const f=e.target.files[0];if(f)document.getElementById("vid").src=URL.createObjectURL(f)};
+document.getElementById("nav").innerHTML = T.map((t,j)=>`<button onclick="show(${j})">${j+1}. ${t[0]}</button>`).join("");
 show(0);
-</script></body></html>
+</script>
+</body></html>
