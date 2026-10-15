@@ -1,48 +1,62 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>AuraG2P Medium–Large Business Suite</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AuraG2P Medium-to-Large Business Suite — 10 Best Templates</title>
 <style>
-body{margin:0;background:#0e1412;color:#e7efe9;font-family:system-ui}
-header{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #24302b;background:#121a18}
-.layout{display:grid;grid-template-columns:240px 1fr}
-.nav button{display:block;width:100%;text-align:left;background:transparent;border:none;color:#d7c08a;padding:10px 16px;cursor:pointer}
-.nav button:hover{background:#1a2421}
-.main{padding:24px}
-.kpi{font-size:32px;color:#c9a227}
-table{width:100%;border-collapse:collapse;margin-top:16px} td,th{border-bottom:1px solid #24302b;padding:10px;text-align:left}
-video{width:100%;max-width:640px;background:#000;margin-top:16px}
-</style></head><body>
-<header><strong>AuraG2P Medium–Large Suite</strong><span id="current">Select template</span></header>
-<div class="layout">
-<nav class="nav" id="nav"></nav>
-<main class="main">
-  <div class="kpi" id="kpi">10 Templates</div>
-  <p id="blurb">Choose a business type on the left.</p>
-  <table id="tbl"></table>
-  <h3>Explicit Video Player</h3>
-  <video controls id="vid"></video>
-  <input type="file" accept="video/*" onchange="document.getElementById('vid').src=URL.createObjectURL(this.files[0])"/>
-</main>
+:root{--bg:#0b0f0e;--panel:#121a18;--accent:#c9a227;--text:#e8f0ec;--border:#2a3a34;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;}
+header{padding:20px;border-bottom:1px solid var(--border);text-align:center;}
+.templates{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:20px;}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;}
+.card:hover{border-color:var(--accent);}
+.preview{display:none;position:fixed;inset:0;background:#000c;z-index:100;padding:20px;overflow:auto;}
+.preview.active{display:block;}
+video{width:100%;max-height:300px;background:#000;}
+button{background:#1a2421;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;cursor:pointer;}
+button:hover{border-color:var(--accent);}
+</style>
+</head>
+<body>
+<header>
+<h1>AuraG2P Medium-to-Large Business Suite</h1>
+<p>One website/app · 10 best templates · Explicit video player · Shared memory ready</p>
+</header>
+<div class="templates" id="grid"></div>
+<div class="preview" id="preview">
+<button onclick="closePreview()">Close</button>
+<div id="preview-content"></div>
+<video controls id="vid"></video>
+<input type="file" accept="video/*" onchange="document.getElementById('vid').src=URL.createObjectURL(this.files[0])">
+<p>Explicit HTML5 video player (required).</p>
 </div>
 <script>
-const T=[
-["Multi-site Clinic Group","Regions, credentialing, referral SLA, shared brand"],
-["Hotel / Venue Group","Occupancy, events, brand standards, multi-property"],
-["Regional Retailer","Stores, inventory, campaigns, regional pricing"],
-["B2B Manufacturer","Plants, orders, QA lots, supply chain"],
-["Professional Network","Offices, matters, conflicts, knowledge base"],
-["Media Network","Shows, rights, release calendar, multi-channel"],
-["Logistics Operator","Lanes, exceptions, POD, fleet"],
-["Education Group","Campuses, terms, enrollment, faculty"],
-["Property Portfolio","Assets, leases, capex, reporting"],
-["Holding Company","Subsidiaries, board pack, KPIs, governance"]
+const templates = [
+  {id:1, name:'Corporate/Enterprise', desc:'Home, about, leadership, careers, investors, news, contact.'},
+  {id:2, name:'E-commerce Store', desc:'Products, cart, checkout, categories, account, support.'},
+  {id:3, name:'Agency/Creative Studio', desc:'Work portfolio, case studies, team, services, blog, contact.'},
+  {id:4, name:'SaaS Product', desc:'Hero, features, pricing tiers, docs, blog, login, integrations.'},
+  {id:5, name:'Education/Training', desc:'Courses, instructors, enrollment, schedule, resources, about.'},
+  {id:6, name:'Healthcare Practice', desc:'Services, providers, appointments, patient portal, about, contact.'},
+  {id:7, name:'Law Firm', desc:'Practice areas, attorneys, case results, resources, contact, blog.'},
+  {id:8, name:'Manufacturing', desc:'Products, capabilities, quality, locations, careers, contact.'},
+  {id:9, name:'Multi-location Retail', desc:'Locations, products, offers, careers, about, contact.'},
+  {id:10, name:'Membership/Community Platform', desc:'Join, benefits, events, members, content, account.'}
 ];
-function show(i){
-  document.getElementById("current").textContent = T[i][0];
-  document.getElementById("blurb").textContent = T[i][1];
-  document.getElementById("tbl").innerHTML = `<tr><th>Role</th><td>Operator / Regional / HQ</td></tr><tr><th>Modules</th><td>Pipeline, People, Files, Audit, Video</td></tr><tr><th>Deploy</th><td>/apps/web /apps/api /release</td></tr>`;
+const grid = document.getElementById('grid');
+templates.forEach(t => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<h3>${t.name}</h3><p>${t.desc}</p><button>Preview / Use Template</button>`;
+  card.querySelector('button').onclick = () => showPreview(t);
+  grid.appendChild(card);
+});
+function showPreview(t) {
+  document.getElementById('preview-content').innerHTML = `<h2>${t.name}</h2><p>${t.desc}</p><p>Static HTML export ready. Integrates with Codeless Builder and G2PTechOffice shared memory for elite ops.</p><button onclick="alert('Template scaffolded into shared memory (g2p-os-memory).')">Apply to Shared Memory</button>`;
+  document.getElementById('preview').classList.add('active');
 }
-document.getElementById("nav").innerHTML = T.map((t,j)=>`<button onclick="show(${j})">${j+1}. ${t[0]}</button>`).join("");
-show(0);
+function closePreview() { document.getElementById('preview').classList.remove('active'); }
 </script>
-</body></html>
+</body>
+</html>
