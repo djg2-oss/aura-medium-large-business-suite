@@ -8,20 +8,19 @@
 :root{--bg:#0b0f0e;--panel:#121a18;--accent:#c9a227;--text:#e8f0ec;--border:#2a3a34;}
 body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;}
 header{padding:20px;border-bottom:1px solid var(--border);text-align:center;}
-.templates{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:20px;}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;}
+.templates{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding:20px;}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;}
 .card:hover{border-color:var(--accent);}
 .preview{display:none;position:fixed;inset:0;background:#000c;z-index:100;padding:20px;overflow:auto;}
 .preview.active{display:block;}
-video{width:100%;max-height:300px;background:#000;}
+video{width:100%;max-height:280px;background:#000;}
 button{background:#1a2421;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;cursor:pointer;}
-button:hover{border-color:var(--accent);}
 </style>
 </head>
 <body>
 <header>
 <h1>AuraG2P Medium-to-Large Business Suite</h1>
-<p>One website/app · 10 best templates · Explicit video player · Shared memory ready</p>
+<p>One website/app · 10 best templates for scale · Explicit video player · Shared memory · Multi-location ready</p>
 </header>
 <div class="templates" id="grid"></div>
 <div class="preview" id="preview">
@@ -29,34 +28,33 @@ button:hover{border-color:var(--accent);}
 <div id="preview-content"></div>
 <video controls id="vid"></video>
 <input type="file" accept="video/*" onchange="document.getElementById('vid').src=URL.createObjectURL(this.files[0])">
-<p>Explicit HTML5 video player (required).</p>
+<p>Explicit HTML5 video player.</p>
 </div>
 <script>
 const templates = [
-  {id:1, name:'Corporate/Enterprise', desc:'Home, about, leadership, careers, investors, news, contact.'},
-  {id:2, name:'E-commerce Store', desc:'Products, cart, checkout, categories, account, support.'},
-  {id:3, name:'Agency/Creative Studio', desc:'Work portfolio, case studies, team, services, blog, contact.'},
-  {id:4, name:'SaaS Product', desc:'Hero, features, pricing tiers, docs, blog, login, integrations.'},
-  {id:5, name:'Education/Training', desc:'Courses, instructors, enrollment, schedule, resources, about.'},
-  {id:6, name:'Healthcare Practice', desc:'Services, providers, appointments, patient portal, about, contact.'},
-  {id:7, name:'Law Firm', desc:'Practice areas, attorneys, case results, resources, contact, blog.'},
-  {id:8, name:'Manufacturing', desc:'Products, capabilities, quality, locations, careers, contact.'},
-  {id:9, name:'Multi-location Retail', desc:'Locations, products, offers, careers, about, contact.'},
-  {id:10, name:'Membership/Community Platform', desc:'Join, benefits, events, members, content, account.'}
+  {id:1, name:'Multi-Site Clinic / Healthcare Group', desc:'Locations, services per site, patient portal hooks, team, testimonials, booking system.'},
+  {id:2, name:'Law Firm / Professional Services Firm', desc:'Practice areas, attorneys, case results, matter intake, resources, contact.'},
+  {id:3, name:'Architecture / Design Studio', desc:'Project portfolio grid, services, team, process, contact/RFQ.'},
+  {id:4, name:'Film / Production Company', desc:'Projects/reels, services, team, equipment, booking, portfolio.'},
+  {id:5, name:'Research Lab / R&D Organization', desc:'Research areas, publications, team, facilities, news, contact.'},
+  {id:6, name:'Brokerage / Financial Services', desc:'Services, team, market insights, client portal CTA, compliance notes.'},
+  {id:7, name:'Hotel Group / Hospitality', desc:'Properties, amenities, booking, experiences, locations, contact.'},
+  {id:8, name:'Manufacturer / Industrial', desc:'Products/capabilities, facilities, quality, industries served, RFQ.'},
+  {id:9, name:'Agency Holding / Multi-Brand', desc:'Brands, case studies, services, team, contact for partnerships.'},
+  {id:10, name:'Enterprise SaaS / Platform', desc:'Features, use cases, pricing tiers, security, integrations, demo CTA.'}
 ];
 const grid = document.getElementById('grid');
 templates.forEach(t => {
   const card = document.createElement('div');
   card.className = 'card';
-  card.innerHTML = `<h3>${t.name}</h3><p>${t.desc}</p><button>Preview / Use Template</button>`;
-  card.querySelector('button').onclick = () => showPreview(t);
+  card.innerHTML = `<h3>${t.name}</h3><p>${t.desc}</p><button>Preview Template</button>`;
+  card.querySelector('button').onclick = () => {
+    document.getElementById('preview-content').innerHTML = `<h2>${t.name}</h2><p>${t.desc}</p><p>Scaffold ready for Codeless Builder. Shared memory key g2p-os-memory.</p><button onclick="alert('Scaffold applied to shared memory.')">Apply</button>`;
+    document.getElementById('preview').classList.add('active');
+  };
   grid.appendChild(card);
 });
-function showPreview(t) {
-  document.getElementById('preview-content').innerHTML = `<h2>${t.name}</h2><p>${t.desc}</p><p>Static HTML export ready. Integrates with Codeless Builder and G2PTechOffice shared memory for elite ops.</p><button onclick="alert('Template scaffolded into shared memory (g2p-os-memory).')">Apply to Shared Memory</button>`;
-  document.getElementById('preview').classList.add('active');
-}
-function closePreview() { document.getElementById('preview').classList.remove('active'); }
+function closePreview(){ document.getElementById('preview').classList.remove('active'); }
 </script>
 </body>
 </html>
