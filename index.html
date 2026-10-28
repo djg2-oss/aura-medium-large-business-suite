@@ -13,14 +13,15 @@ header{padding:20px;border-bottom:1px solid var(--border);text-align:center;}
 .card:hover{border-color:var(--accent);}
 .preview{display:none;position:fixed;inset:0;background:#000c;z-index:100;padding:20px;overflow:auto;}
 .preview.active{display:block;}
-video{width:100%;max-height:280px;background:#000;}
+video{width:100%;max-height:280px;background:#000;border-radius:8px;}
 button{background:#1a2421;color:var(--text);border:1px solid var(--border);padding:8px 12px;border-radius:4px;cursor:pointer;}
+.scaffold{font-family:ui-monospace,monospace;font-size:13px;background:#0a100e;padding:12px;border-radius:6px;white-space:pre-wrap;max-height:180px;overflow:auto;}
 </style>
 </head>
 <body>
 <header>
 <h1>AuraG2P Medium-to-Large Business Suite</h1>
-<p>One website/app · 10 best templates for scale · Explicit video player · Shared memory · Multi-location ready</p>
+<p>One website/app · 10 best templates for scale · Explicit video player · Shared g2p-os-memory · Multi-location · AuraXur OS</p>
 </header>
 <div class="templates" id="grid"></div>
 <div class="preview" id="preview">
@@ -31,29 +32,39 @@ button{background:#1a2421;color:var(--text);border:1px solid var(--border);paddi
 <p>Explicit HTML5 video player.</p>
 </div>
 <script>
+const KEY = 'g2p-os-memory';
 const templates = [
-  {id:1, name:'Multi-Site Clinic / Healthcare Group', desc:'Locations, services per site, patient portal hooks, team, testimonials, booking system.'},
-  {id:2, name:'Law Firm / Professional Services Firm', desc:'Practice areas, attorneys, case results, matter intake, resources, contact.'},
-  {id:3, name:'Architecture / Design Studio', desc:'Project portfolio grid, services, team, process, contact/RFQ.'},
-  {id:4, name:'Film / Production Company', desc:'Projects/reels, services, team, equipment, booking, portfolio.'},
-  {id:5, name:'Research Lab / R&D Organization', desc:'Research areas, publications, team, facilities, news, contact.'},
-  {id:6, name:'Brokerage / Financial Services', desc:'Services, team, market insights, client portal CTA, compliance notes.'},
-  {id:7, name:'Hotel Group / Hospitality', desc:'Properties, amenities, booking, experiences, locations, contact.'},
-  {id:8, name:'Manufacturer / Industrial', desc:'Products/capabilities, facilities, quality, industries served, RFQ.'},
-  {id:9, name:'Agency Holding / Multi-Brand', desc:'Brands, case studies, services, team, contact for partnerships.'},
-  {id:10, name:'Enterprise SaaS / Platform', desc:'Features, use cases, pricing tiers, security, integrations, demo CTA.'}
+  {id:1, name:'Multi-Site Clinic / Healthcare Group', desc:'Locations, services per site, patient portal hooks, team, testimonials, booking system.', scaffold:'<!-- Multi-Site Clinic -->\n<section>Locations grid</section>\n<section>Services by site</section>\n<section>Team & Booking</section>'},
+  {id:2, name:'Law Firm / Professional Services Firm', desc:'Practice areas, attorneys, case results, matter intake, resources, contact.', scaffold:'<!-- Law Firm -->\n<section>Practice areas</section>\n<section>Attorneys</section>\n<section>Case results & Intake</section>'},
+  {id:3, name:'Architecture / Design Studio', desc:'Project portfolio grid, services, team, process, contact/RFQ.', scaffold:'<!-- Architecture -->\n<section>Portfolio grid</section>\n<section>Process & Team</section>'},
+  {id:4, name:'Film / Production Company', desc:'Projects/reels, services, team, equipment, booking, portfolio.', scaffold:'<!-- Production -->\n<section>Reels & Projects</section>\n<section>Services & Equipment</section>'},
+  {id:5, name:'Research Lab / R&D Organization', desc:'Research areas, publications, team, facilities, news, contact.', scaffold:'<!-- Research -->\n<section>Research areas</section>\n<section>Publications & Team</section>'},
+  {id:6, name:'Brokerage / Financial Services', desc:'Services, team, market insights, client portal CTA, compliance notes.', scaffold:'<!-- Brokerage -->\n<section>Services</section>\n<section>Insights & Portal CTA</section>'},
+  {id:7, name:'Hotel Group / Hospitality', desc:'Properties, amenities, booking, experiences, locations, contact.', scaffold:'<!-- Hospitality -->\n<section>Properties</section>\n<section>Amenities & Booking</section>'},
+  {id:8, name:'Manufacturer / Industrial', desc:'Products/capabilities, facilities, quality, industries served, RFQ.', scaffold:'<!-- Industrial -->\n<section>Capabilities</section>\n<section>Facilities & RFQ</section>'},
+  {id:9, name:'Agency Holding / Multi-Brand', desc:'Brands, case studies, services, team, contact for partnerships.', scaffold:'<!-- Agency Holding -->\n<section>Brands</section>\n<section>Case studies</section>'},
+  {id:10, name:'Enterprise SaaS / Platform', desc:'Features, use cases, pricing tiers, security, integrations, demo CTA.', scaffold:'<!-- Enterprise SaaS -->\n<section>Features & Use cases</section>\n<section>Pricing & Security</section>\n<section>Demo CTA</section>'}
 ];
+function loadMem(){ try { return JSON.parse(localStorage.getItem(KEY)||'null')||{files:{},log:[]}; } catch(e){ return {files:{},log:[]}; } }
+function saveMem(m){ localStorage.setItem(KEY, JSON.stringify(m)); }
 const grid = document.getElementById('grid');
 templates.forEach(t => {
   const card = document.createElement('div');
   card.className = 'card';
-  card.innerHTML = `<h3>${t.name}</h3><p>${t.desc}</p><button>Preview Template</button>`;
+  card.innerHTML = `<h3>${t.name}</h3><p>${t.desc}</p><button>Preview / Scaffold</button>`;
   card.querySelector('button').onclick = () => {
-    document.getElementById('preview-content').innerHTML = `<h2>${t.name}</h2><p>${t.desc}</p><p>Scaffold ready for Codeless Builder. Shared memory key g2p-os-memory.</p><button onclick="alert('Scaffold applied to shared memory.')">Apply</button>`;
+    document.getElementById('preview-content').innerHTML = `<h2>${t.name}</h2><p>${t.desc}</p><div class="scaffold">${t.scaffold}</div><button onclick="applyTemplate('${t.id}')">Apply to Shared Memory</button>`;
     document.getElementById('preview').classList.add('active');
   };
   grid.appendChild(card);
 });
+function applyTemplate(id){
+  const mem = loadMem();
+  mem.files['/templates/medium-large/'+id] = {type:'file', body: templates.find(x=>x.id==id).scaffold, applied: new Date().toISOString()};
+  mem.log.unshift(new Date().toISOString() + ' Applied ML template '+id);
+  saveMem(mem);
+  alert('Scaffold applied to shared g2p-os-memory.');
+}
 function closePreview(){ document.getElementById('preview').classList.remove('active'); }
 </script>
 </body>
